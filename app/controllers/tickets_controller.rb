@@ -45,7 +45,7 @@ end
     private
 
     def ticket_params
-      params.require(:ticket).permit(:priority, :category_id, :description)
+      params.require(:ticket).permit(:priority, :category_id, :description, :user_id, :status, :ticket_id)
     end
 
     def redirect_if_not_admin
