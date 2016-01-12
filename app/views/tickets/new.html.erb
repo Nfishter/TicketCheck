@@ -1,0 +1,23 @@
+<h1>Create Your New Ticket</h1>
+<%= form_for @ticket do |f| %>
+  <p>
+    <%= f.label :priority %><br>
+    <%= f.select :priority, [['Low','low'],['Medium','medium'],['High','high'], ['Urgent', 'urgent']] %>
+  </p>
+
+  <p>
+  <%= f.label :category %><br />
+  <%= f.collection_select :category_id, Category.all, :id, :Type, :prompt => "Select a category" %>
+</p>
+
+
+
+  <p>
+    <%= f.label :description_of_problem %><br>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

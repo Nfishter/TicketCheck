@@ -1,0 +1,41 @@
+<h1>Update Ticket</h1>
+
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Status</th>
+    <th>Priority</th>
+    <th>Category</th>
+	  <th>Created</th>
+    <th>Description</th>
+    <th>Progress</th>
+  </tr>
+
+<%= form_for @ticket do |f| %>
+  
+
+  <tr>
+  <td>
+    <%= f.label :owner %><br />
+    <%= f.collection_select :user_id, User.all, :id, :name %>
+  </td>
+   
+   <td>
+    <%= f.label :status %><br>
+    <%= f.select :status, [['Open','open'],['In Progress','in_progress'],['Blocked-Waiting','blocked_waiting'], ['Closed', 'closed']] %>
+  </td>
+  
+  <td>
+    <%= f.label :priority %><br>
+    <%= f.select :priority, [['Low','low'],['Medium','medium'],['High','high'], ['Urgent', 'urgent']] %>
+  </td>
+
+  <td>
+    <%= f.label :category %><br />
+    <%= f.collection_select :category_id, Category.all, :id, :Type, :prompt => "Select a category" %>
+  </td>
+     <td>
+    <%= f.submit "Update Ticket" %>
+  </td>
+  <% end %>
+

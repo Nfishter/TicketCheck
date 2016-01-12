@@ -1,0 +1,55 @@
+<table>
+  <tr>
+    <th>Owner</th>
+    <th>Status</th>
+    <th>Priority</th>
+    <th>Created</th>
+    <th>Description</th>
+  </tr>
+<%= form_for @ticket do |s| %>
+  <tr>
+    
+    <td>  
+      <%= s.collection_select :user_id, User.all, :id, :name %>
+    </td>
+    
+    <td>    
+      <%= s.select :status, [['Open','open'],['In Progress','in_progress'],['Blocked-Waiting','blocked_waiting'], ['Closed', 'closed']] %>
+    </td>
+    <td>
+      <%= s.select :priority, [['Low','low'],['Medium','medium'],['High','high'], ['Urgent', 'urgent']] %>
+    </td>
+    
+    <td><%= @ticket.created_at %></td>
+    <td><%= @ticket.description %></td>
+    <td>
+      <%= s.submit "Update Ticket" %>
+    </td>
+  </tr>
+</table>
+<table>
+
+<% end %>
+<% @ticket.comments.each do |comment| %>
+  <p>
+    <strong>Updates</strong>
+    <%= comment.content %>
+  </p>
+
+<% end %>
+<%= form_for([@ticket, @ticket.comments.build]) do |f| %>
+
+  <tr>
+  <th>Updates</th>
+  </tr>
+  
+  <tr>
+  <td>
+    <%= f.text_area :content %>
+  </td>
+  <td>
+    <%= f.submit "Add Comment" %>
+  </tr>
+</table>
+<td><%= link_to 'Home', root_path %></td>
+<% end %>

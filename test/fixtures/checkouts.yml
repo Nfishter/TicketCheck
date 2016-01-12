@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  checkout: 2016-01-01
+  return: 2016-01-01
+
+two:
+  checkout: 2016-01-01
+  return: 2016-01-01
